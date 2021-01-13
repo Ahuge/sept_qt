@@ -4,12 +4,47 @@ from PySide import QtGui, QtCore
 
 
 class TemplatePreviewWidget(QtGui.QPlainTextEdit):
+    """
+    TemplatePreviewWidget is a QPlainTextEdit designed to help visualize what
+        a specific template would output given certain situations.
+
+    It will attempt to resolve the `sept.Template` object for each example
+        case passed in to it's `data_list` parameter.
+    If any of these error out, the `resolve_error` signal will emit the error
+        and stop resolving.
+
+    Assuming all of the example cases resolve correctly, the QPlainTextEdit
+        will update the preview text.
+    """
     resolve_error = QtCore.Signal(object)
 
-    def __init__(self, parser, data_list, text=None, parent=None):
+    def __init__(self, data_list, text=None, parent=None):
+        """
+        TemplatePreviewWidget takes a list of data dictionaries for resolving
+            a template.
+
+        These data dictionaries (`data_list`) are intended to be an example
+            subset of your entire dataset.
+        We recommend passing no more than 10ish to ensure better performance
+            in your GUI application, however that said, you're an adult and
+            can pass as many as you'd like.
+
+        When you are ready to generate previews for a `sept.Template` object,
+            you can pass the template to the `preview_template` method to get
+            your results.
+
+        You should subscribe to the `resolve_error` signal so that you can
+            handle errors in resolving.
+        When used with the `sept_qt.TemplateInputWidget` class, you can
+            connect directly to the `recieve_error` slot.
+
+        :param list[dict] data_list: A list of dictionaries used to resolve a
+            `sept.Template` in different scenarios.
+        :param str text: Default text for the QPlainTextEdit.
+        :param QtGui.QWidget|None parent: Optional Qt parent widget.
+        """
         super(TemplatePreviewWidget, self).__init__(text, parent)
         self.setReadOnly(True)
-        self.parser = parser
         self._data_objects = data_list
         self.setEnabled(False)
 
