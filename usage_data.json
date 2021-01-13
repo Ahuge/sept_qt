@@ -1,0 +1,190 @@
+[
+    {
+        "code": "vps0190_comp_v001_Avid.mov",
+        "description": null,
+        "project.Project.code": "MyProject",
+        "project.Project.tank_name": "mprj",
+        "user.HumanUser.name": "Mike Franken",
+        "entity.Shot.sg_sequence.Sequence.code": "vps",
+        "published_files": [
+            {
+                "path": null,
+                "version_number": null, 
+                "type": "PublishedFile", 
+                "id": 105,
+                "name": "vps0190_comp_v001"
+            },
+            {
+                "path": {
+                  "name": "vps0190_comp_v001_Avid.mov",
+                  "url": "file:///mnt/mprj/post/shot/vps/vps0190/shot/renders/nuke/vps0190_comp_v001/1920x1080/Avid/vps0190_comp_v001_Avid.mov",
+                  "content_type": null,
+                  "type": "Attachment",
+                  "id": 771,
+                  "link_type": "web"
+                },
+                "version_number": 1, 
+                "type": "PublishedFile", 
+                "id": 103,
+                "name": "vps0190_comp_v001_Avid.mov"
+            }
+        ],
+        "user.HumanUser.firstname": "Mike", 
+        "sg_status_list": "rev",
+        "entity.Sequence.code": null, 
+        "type": "Version", 
+        "id": 7023,
+        "entity.Shot.code": "vps0190",
+        "user.HumanUser.lastname": "Franken"
+    },
+    {
+        "code": "vps0190_comp_v001_H264.mov", 
+        "description": null,
+        "project.Project.code": "MyProject",
+        "project.Project.tank_name": "mprj",
+        "user.HumanUser.name": "Mike Franken",
+        "entity.Shot.sg_sequence.Sequence.code": "vps",
+        "published_files": [
+            {
+                "path": {
+                  "name": "vps0190_comp_v001_H264.mov",
+                  "url": "file:///mnt/mprj/post/shot/vps/vps0190/shot/renders/nuke/vps0190_comp_v001/1920x1080/H264/vps0190_comp_v001_H264.mov",
+                  "content_type": null,
+                  "type": "Attachment",
+                  "id": 773,
+                  "link_type": "web"
+                },
+                "version_number": 1, 
+                "type": "PublishedFile", 
+                "id": 104,
+                "name": "vps0190_comp_v001_H264.mov"
+            }
+        ],
+        "user.HumanUser.firstname": "Mike", 
+        "sg_status_list": null,
+        "entity.Sequence.code": null, 
+        "type": "Version", "id": 7024,
+        "entity.Shot.code": "vps0190",
+        "user.HumanUser.lastname": "Franken"
+    }, 
+    {
+        "code": "ftt0200_bg_v001",
+        "description": "A published reference file",
+        "project.Project.code": "MyProject",
+        "project.Project.tank_name": "mprj",
+        "user.HumanUser.name": "Erik Gerrat",
+        "entity.Shot.sg_sequence.Sequence.code": "ftt",
+        "published_files": [
+            {
+                "path": {
+                  "local_path_windows": null,
+                  "name": "ftt0200_bg_v001",
+                  "local_path_linux": "/mnt/Projects/mprj/sequences/ftt/ftt0200/plates/mprj_ftt_ftt0200_bg_v001/2156x1500/mprj_ftt_ftt0200_bg_v001.%04d.exr",
+                  "url": "file://",
+                  "local_storage": {
+                    "type": "LocalStorage",
+                    "id": 4,
+                    "name": "Primary"
+                  },
+                  "local_path": null,
+                  "content_type": "image/exr",
+                  "local_path_mac": null,
+                  "type": "Attachment",
+                  "id": 807,
+                  "link_type": "local"
+                },
+                "version_number": 1,
+                "type": "PublishedFile",
+                "id": 136,
+                "name": "ftt0200_bg_v001"
+            }
+        ],
+        "user.HumanUser.firstname": "Erik",
+        "sg_status_list": "rev",
+        "entity.Sequence.code": null,
+        "type": "Version",
+        "id": 7056,
+        "entity.Shot.code": "ftt0200",
+        "user.HumanUser.lastname": "Gerrat"
+    },
+    {
+        "code": "ftt0010_bg_v001",
+        "description": "A published reference file",
+        "project.Project.code": "MyProject",
+        "project.Project.tank_name": "mprj",
+        "user.HumanUser.name": "Erik Gerrat",
+        "entity.Shot.sg_sequence.Sequence.code": "ftt",
+        "published_files": [
+            {
+                "path": {
+                  "local_path_windows": null,
+                  "name": "ftt0010_bg_v001",
+                  "local_path_linux": "/mnt/Projects/mprj/sequences/ftt/ftt0010/plates/mprj_ftt_ftt0010_bg_v001/2156x1500/mprj_ftt_ftt0010_bg_v001.%04d.exr",
+                  "url": "file://",
+                  "local_storage": {
+                    "type": "LocalStorage",
+                    "id": 4,
+                    "name": "Primary"
+                  },
+                  "local_path": null,
+                  "content_type": "image/exr",
+                  "local_path_mac": null,
+                  "type": "Attachment",
+                  "id": 808,
+                  "link_type": "local"
+                },
+                "version_number": 1, 
+                "type": "PublishedFile", 
+                "id": 137,
+                "name": "ftt0010_bg_v001"
+            }
+        ],
+        "user.HumanUser.firstname": "Erik",
+        "sg_status_list": "rev",
+        "entity.Sequence.code": null, 
+        "type": "Version", 
+        "id": 7057,
+        "entity.Shot.code": "ftt0010",
+        "user.HumanUser.lastname": "Gerrat"
+    }, 
+    {
+        "code": "vps0020_bg_v001",
+        "description": "A published reference file",
+        "project.Project.code": "MyProject",
+        "project.Project.tank_name": "mprj",
+        "user.HumanUser.name": "Erik Gerrat",
+        "entity.Shot.sg_sequence.Sequence.code": "vps",
+        "published_files": [
+            {
+                "path": {
+                  "local_path_windows": null,
+                  "name": "vps0020_bg_v001",
+                  "local_path_linux": "/mnt/Projects/mprj/sequences/vps/vps0020/plates/mprj_vps_vps0020_bg_v001/2156x1500/mprj_vps_vps0020_bg_v001.%04d.exr",
+                  "url": "file://",
+                  "local_storage": {
+                    "type": "LocalStorage",
+                    "id": 4,
+                    "name": "Primary"
+                  },
+                  "local_path": null,
+                  "content_type": "image/exr",
+                  "local_path_mac": null,
+                  "type": "Attachment",
+                  "id": 815,
+                  "link_type": "local"
+                },
+                "version_number": 1,
+                "type": "PublishedFile",
+                "id": 142,
+                "name": "vps0020_bg_v001"
+            }
+        ],
+        "user.HumanUser.firstname": "Erik",
+        "sg_status_list": "rev",
+        "entity.Sequence.code": null,
+        "type": "Version",
+        "id": 7058,
+        "entity.Shot.code": "vps0020",
+        "user.HumanUser.lastname": "Gerrat"
+    }
+]
