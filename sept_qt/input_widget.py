@@ -27,6 +27,7 @@ class TemplateInputWidget(QtGui.QWidget):
         error class has "location" and "length" attributes on it that can be
         used to display the highlighting.
     """
+
     ERROR_BG_COLOUR = QtGui.QColor(255, 192, 192)
     template_changed = QtCore.Signal(object)
     _TIMER_TIMEOUT = 1250
@@ -134,28 +135,35 @@ class TemplateInputWidget(QtGui.QWidget):
         :return: A python function with the `error` wrapped.
         :rtype: callable
         """
+
         def __display_error():
             text = self._line_widget.toPlainText()
             cursor = self._line_widget.textCursor()
             position = cursor.position()
 
             start = 0
-            if isinstance(error, errors.LocationAwareSeptError) or hasattr(error, "location"):
+            if isinstance(error, errors.LocationAwareSeptError) or hasattr(
+                error, "location"
+            ):
                 start = error.location
 
             length = len(text) - start
-            if isinstance(error, errors.LocationAwareSeptError) or hasattr(error, "length"):
+            if isinstance(error, errors.LocationAwareSeptError) or hasattr(
+                error, "length"
+            ):
                 length = error.length + 1
 
             before, target, after = (
                 text[:start],
-                text[start:start + length - 1],
-                text[start + length - 1:],
+                text[start : start + length - 1],
+                text[start + length - 1 :],
             )
-            colour_start = '<b style="background-color:rgb({red},{green},{blue});">'.format(
-                red=self.error_colour.red(),
-                green=self.error_colour.green(),
-                blue=self.error_colour.blue(),
+            colour_start = (
+                '<b style="background-color:rgb({red},{green},{blue});">'.format(
+                    red=self.error_colour.red(),
+                    green=self.error_colour.green(),
+                    blue=self.error_colour.blue(),
+                )
             )
             resulting_string = before + colour_start + target + "</b>" + after
             self._line_widget.textChanged.disconnect(self._handle_text_edited)
@@ -168,6 +176,7 @@ class TemplateInputWidget(QtGui.QWidget):
             self._error_widget.setText(str(error))
             self._error_widget.show()
             self._stop_error_timer()
+
         return __display_error
 
     @QtCore.Slot(object)
@@ -214,6 +223,7 @@ class TemplateInputWidget(QtGui.QWidget):
         except Exception as err:
             print("Error: {}".format(str(err)))
             import traceback
+
             traceback.print_exc()
             return
         else:

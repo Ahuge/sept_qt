@@ -16,6 +16,7 @@ class TemplatePreviewWidget(QtGui.QPlainTextEdit):
     Assuming all of the example cases resolve correctly, the QPlainTextEdit
         will update the preview text.
     """
+
     resolve_error = QtCore.Signal(object)
 
     def __init__(self, data_list, text=None, parent=None):

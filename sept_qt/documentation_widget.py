@@ -11,6 +11,7 @@ class DocumentationWidget(QtGui.QTabWidget):
     This is a known security risk if you are loading Tokens or Operators
         from an untrusted source.
     """
+
     def __init__(self, parser, parent=None):
         """
         DocumentationWidget only requires a `sept.PathTemplateParser` object
