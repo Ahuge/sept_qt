@@ -1,0 +1,2 @@
+include versioneer.py
+include sept_qt/_version.py
