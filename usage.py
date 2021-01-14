@@ -122,6 +122,10 @@ def get_tokens():
 
 
 def live_version_data():
+    """
+    live_version_data is an example of how you might prepare data for your
+        sept application.
+    """
     # Setting up input data
     from shotgun_api3 import Shotgun
     sg = Shotgun("https://mysite.shotgunstudio.com", login="mylogin", password="mypassword")
@@ -166,6 +170,12 @@ def live_version_data():
 
 
 def get_version_data():
+    """
+    get_version_data loads previously live data from disk for examples with
+        your sept application.
+
+    Plus, not like I'm going to hard code my credentials or anything
+    """
     with open(os.path.join(os.path.dirname(__file__), "usage_data.json"), "r") as fh:
         version_data = json.loads(fh.read())
     return version_data
@@ -204,31 +214,8 @@ class Dialog(QtGui.QDialog):
         self.layout().addWidget(self.splitter)
 
 
-
-
 if __name__ == "__main__":
     app = QtGui.QApplication([])
-
-    QtGui.QApplication.setStyle("plastique")
-    # QtGui.QApplication.setStyle("fusion")
-    #
-    # palette_file = r"D:\Users\Alex\Downloads\dark_palette.qpalette"
-    # fh = QtCore.QFile(palette_file)
-    # fh.open(QtCore.QIODevice.ReadOnly)
-    # file_in = QtCore.QDataStream(fh)
-    #
-    # # deserialize the palette
-    # # (store it for GC purposes)
-    # _dark_palette = QtGui.QPalette()
-    # file_in.__rshift__(_dark_palette)
-    # fh.close()
-    # QtGui.QApplication.setPalette(_dark_palette)
-    #
-    # css_file = r"D:\Users\Alex\Downloads\dark_palette.css"
-    # f = open(css_file)
-    # css_data = f.read()
-    # f.close()
-    # app.setStyleSheet(css_data)
 
     dialog = Dialog()
     dialog.show()
