@@ -55,7 +55,7 @@ jobs:
                 twine check --strict dist/*.whl
                 echo "----------------------------"
                 echo "Uploading: $(ls dist/*.whl | tr '\r\n' ' ')"
-                twine upload dist/*.whl --verbose --skip-existing -c "${{ steps.gen-upload-url.outputs.release-body }}"
+                twine upload dist/*.whl --verbose --skip-existing
               env:
                   TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
                   TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
