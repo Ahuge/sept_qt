@@ -33,10 +33,14 @@ class DocumentationWidget(QtGui.QTabWidget):
         self.addTab(self._operator_webview, "Operators")
 
     def html_prefix(self):
-        return "<head><style>body {" \
-               "background-color: " + self._get_background_colour() + \
-                "color: " + self._get_foreground_colour() + \
-                "}</style></head>"
+        return (
+            "<head><style>body {"
+            "background-color: "
+            + self._get_background_colour()
+            + "color: "
+            + self._get_foreground_colour()
+            + "}</style></head>"
+        )
 
     def _get_background_colour(self):
         bg_colour = self.palette().color(QtGui.QPalette.Base)
@@ -56,14 +60,10 @@ class DocumentationWidget(QtGui.QTabWidget):
 
         """
         token_html = self.parser.token_documentation()
-        self._token_webview.setHtml(
-            self.html_prefix() + token_html
-        )
+        self._token_webview.setHtml(self.html_prefix() + token_html)
 
         operator_html = self.parser.operator_documentation()
-        self._operator_webview.setHtml(
-            self.html_prefix() + operator_html
-        )
+        self._operator_webview.setHtml(self.html_prefix() + operator_html)
 
     def showEvent(self, event):
         self.refreshDocumentation()
