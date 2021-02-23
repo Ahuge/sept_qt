@@ -1,10 +1,13 @@
 from Qt import QtGui, QtWidgets
 import Qt
+
 if Qt.__binding__ == "PySide2":
     from PySide2 import QtWebkitWidgets
+
     QWebView = QtWebkitWidgets.QWebView
 elif Qt.__binding__ == "PySide":
     from PySide import QtWebKit
+
     QWebView = QtWebKit.QWebView
 
 
