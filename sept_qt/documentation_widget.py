@@ -1,7 +1,14 @@
-from PySide import QtGui, QtWebKit
+from Qt import QtGui, QtWidgets
+import Qt
+if Qt.__binding__ == "PySide2":
+    from PySide2 import QtWebkitWidgets
+    QWebView = QtWebkitWidgets.QWebView
+elif Qt.__binding__ == "PySide":
+    from PySide import QtWebKit
+    QWebView = QtWebKit.QWebView
 
 
-class DocumentationWidget(QtGui.QTabWidget):
+class DocumentationWidget(QtWidgets.QTabWidget):
     """
     DocumentationWidget is designed to give a fast and easy way to display the
         Token and Operator documentation to your users.
@@ -21,13 +28,13 @@ class DocumentationWidget(QtGui.QTabWidget):
             documentation from.
 
         :param sept.PathTemplateParser parser: Parser object driving the docs.
-        :param QtGui.QWidget|None parent: Optional Qt parent widget.
+        :param QtWidgets.QWidget|None parent: Optional Qt parent widget.
         """
         super(DocumentationWidget, self).__init__(parent)
 
         self.parser = parser
-        self._token_webview = QtWebKit.QWebView()
-        self._operator_webview = QtWebKit.QWebView()
+        self._token_webview = QWebView()
+        self._operator_webview = QWebView()
 
         self.addTab(self._token_webview, "Tokens")
         self.addTab(self._operator_webview, "Operators")
