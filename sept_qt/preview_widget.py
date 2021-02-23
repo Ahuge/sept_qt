@@ -1,9 +1,9 @@
 from sept import errors
 
-from PySide import QtGui, QtCore
+from Qt import QtWidgets, QtCore
 
 
-class TemplatePreviewWidget(QtGui.QPlainTextEdit):
+class TemplatePreviewWidget(QtWidgets.QPlainTextEdit):
     """
     TemplatePreviewWidget is a QPlainTextEdit designed to help visualize what
         a specific template would output given certain situations.
@@ -42,7 +42,7 @@ class TemplatePreviewWidget(QtGui.QPlainTextEdit):
         :param list[dict] data_list: A list of dictionaries used to resolve a
             `sept.Template` in different scenarios.
         :param str text: Default text for the QPlainTextEdit.
-        :param QtGui.QWidget|None parent: Optional Qt parent widget.
+        :param QtWidgets.QWidget|None parent: Optional Qt parent widget.
         """
         super(TemplatePreviewWidget, self).__init__(text, parent)
         self.setReadOnly(True)

@@ -1,9 +1,9 @@
 from sept import errors
 
-from PySide import QtGui, QtCore
+from Qt import QtGui, QtWidgets, QtCore
 
 
-class TemplateInputWidget(QtGui.QWidget):
+class TemplateInputWidget(QtWidgets.QWidget):
     """
     TemplateInputWidget can be used to interactively create `sept.Template`
         objects and check their validity.
@@ -50,7 +50,7 @@ class TemplateInputWidget(QtGui.QWidget):
             the error highlighting.
         :param int|None timeout: Optional timeout in ms that will be waited
             before displaying an error.
-        :param QtGui.QWidget|None parent: Optional Qt parent widget.
+        :param QtWidgets.QWidget|None parent: Optional Qt parent widget.
         """
         super(TemplateInputWidget, self).__init__(parent)
         self.parser = parser
@@ -64,20 +64,20 @@ class TemplateInputWidget(QtGui.QWidget):
         self._build_ui()
 
     def _build_ui(self):
-        self.setLayout(QtGui.QVBoxLayout())
+        self.setLayout(QtWidgets.QVBoxLayout())
         self.layout().setContentsMargins(0, 0, 0, 0)
-        self._line_widget = QtGui.QTextEdit(self)
-        self._line_widget.setLineWrapMode(QtGui.QTextEdit.NoWrap)
+        self._line_widget = QtWidgets.QTextEdit(self)
+        self._line_widget.setLineWrapMode(QtWidgets.QTextEdit.NoWrap)
         self._line_widget.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self._line_widget.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self._line_widget.setFixedHeight(23)
         self._line_widget.setMinimumWidth(365)
         self._line_widget.setSizePolicy(
-            QtGui.QSizePolicy.Policy.Expanding,
-            QtGui.QSizePolicy.Policy.Fixed,
+            QtWidgets.QSizePolicy.Policy.Expanding,
+            QtWidgets.QSizePolicy.Policy.Fixed,
         )
 
-        self._error_widget = QtGui.QLabel(self)
+        self._error_widget = QtWidgets.QLabel(self)
         self._error_widget.setWordWrap(True)
         self._error_widget.hide()
 
