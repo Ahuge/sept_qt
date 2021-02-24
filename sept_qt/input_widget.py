@@ -179,6 +179,11 @@ class TemplateInputWidget(QtWidgets.QWidget):
 
         return __display_error
 
+    def setText(self, text):
+        self.blockSignals(True)
+        self._line_widget.setHtml(text)
+        self.blockSignals(False)
+
     @QtCore.Slot(object)
     def recieve_error(self, error):
         """
