@@ -183,6 +183,9 @@ class TemplateInputWidget(QtWidgets.QWidget):
         self._line_widget.setHtml(text)
         self._handle_text_edited()
 
+    def refresh(self):
+        self._line_widget.setHtml(self._line_widget.toPlainText())
+
     @QtCore.Slot(object)
     def recieve_error(self, error):
         """
