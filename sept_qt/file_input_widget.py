@@ -157,8 +157,6 @@ class FileTemplateInputWidget(TemplateInputWidget):
     def _handle_load_disk_button_clicked(self):
         path = self._get_folder_path()
 
-        new_path, _ = QtWidgets.QFileDialog.getOpenFileName(
-            self, self.LOAD_TEXT, path
-        )
+        new_path, _ = QtWidgets.QFileDialog.getOpenFileName(self, self.LOAD_TEXT, path)
         self._disk_path = new_path
         self.load_path(self._disk_path)
