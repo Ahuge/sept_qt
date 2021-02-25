@@ -123,18 +123,16 @@ class FileTemplateInputWidget(TemplateInputWidget):
 
     def _get_folder_path(self):
         path = os.getcwd()
-        path_is_dir = True
         if os.path.isfile(self._disk_path):
             if os.path.exists(self._disk_path):
                 path = self._disk_path
-                path_is_dir = False
             elif os.path.exists(os.path.dirname(self._disk_path)):
                 path = os.path.dirname(self._disk_path)
 
         elif os.path.isdir(self._disk_path):
             if os.path.exists(self._disk_path):
                 path = self._disk_path
-        return path, path_is_dir
+        return path
 
     @QtCore.Slot()
     def _handle_save_disk_button_clicked(self):
@@ -144,7 +142,7 @@ class FileTemplateInputWidget(TemplateInputWidget):
                 title="No valid template",
             )
             return
-        path, path_is_dir = self._get_folder_path()
+        path = self._get_folder_path()
         new_path, _ = QtWidgets.QFileDialog.getSaveFileName(self, self.SAVE_TEXT, path)
         with open(new_path, "w") as fh:
             fh.write(self.template._template_str)
@@ -155,15 +153,10 @@ class FileTemplateInputWidget(TemplateInputWidget):
 
     @QtCore.Slot()
     def _handle_load_disk_button_clicked(self):
-        path, path_is_dir = self._get_folder_path()
+        path = self._get_folder_path()
 
-        if path_is_dir:
-            new_path = QtWidgets.QFileDialog.getExistingDirectory(
-                self, self.LOAD_TEXT, path
-            )
-        else:
-            new_path, _ = QtWidgets.QFileDialog.getOpenFileName(
-                self, self.LOAD_TEXT, path
-            )
+        new_path, _ = QtWidgets.QFileDialog.getOpenFileName(
+            self, self.LOAD_TEXT, path
+        )
         self._disk_path = new_path
         self.load_path(self._disk_path)
