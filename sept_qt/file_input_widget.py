@@ -38,15 +38,15 @@ class FileTemplateInputWidget(TemplateInputWidget):
         error class has "location" and "length" attributes on it that can be
         used to display the highlighting.
     """
+
     LOAD_TEXT = "Load SEPT template"
     SAVE_TEXT = "Save SEPT template"
 
-    def __init__(self, parser, error_colour=None, timeout=None, disk_path=None, parent=None):
+    def __init__(
+        self, parser, error_colour=None, timeout=None, disk_path=None, parent=None
+    ):
         super(FileTemplateInputWidget, self).__init__(
-            parser=parser,
-            error_colour=error_colour,
-            timeout=timeout,
-            parent=parent
+            parser=parser, error_colour=error_colour, timeout=timeout, parent=parent
         )
         self._load_from_disk_button = None
         self._save_to_disk_button = None
@@ -68,17 +68,16 @@ class FileTemplateInputWidget(TemplateInputWidget):
             template_str = self._read_from_path(path)
         except errors.SeptError as err:
             import traceback
-            message = "Error loading template data from {path}\n" \
-                      "Error was: {error}\n" \
-                      "{long_error}"\
-                .format(
-                    path=path,
-                    error=str(err),
-                    long_error=traceback.format_exc()
+
+            message = (
+                "Error loading template data from {path}\n"
+                "Error was: {error}\n"
+                "{long_error}".format(
+                    path=path, error=str(err), long_error=traceback.format_exc()
                 )
+            )
             self._display_error(
-                message=message,
-                title="Error loading template data from disk!"
+                message=message, title="Error loading template data from disk!"
             )
             return
         else:  # No errors
@@ -94,11 +93,11 @@ class FileTemplateInputWidget(TemplateInputWidget):
         self._load_from_disk_button = QtWidgets.QPushButton("...")
         self._load_from_disk_button.setMaximumWidth(24)
         self._load_from_disk_button.clicked.connect(
-            self._handle_load_disk_button_clicked)
+            self._handle_load_disk_button_clicked
+        )
         self._save_to_disk_button = QtWidgets.QPushButton("Save...")
         self._save_to_disk_button.setMaximumWidth(56)
-        self._save_to_disk_button.clicked.connect(
-            self._handle_save_disk_button_clicked)
+        self._save_to_disk_button.clicked.connect(self._handle_save_disk_button_clicked)
 
         widget.layout().addWidget(line_edit_widget)
         widget.layout().addWidget(self._load_from_disk_button)
@@ -142,20 +141,16 @@ class FileTemplateInputWidget(TemplateInputWidget):
         if not self.template:
             self._display_information(
                 message="Input text box does not contain a valid template. Please fix any errors or type one.",
-                title="No valid template"
+                title="No valid template",
             )
             return
         path, path_is_dir = self._get_folder_path()
-        new_path, _ = QtWidgets.QFileDialog.getSaveFileName(
-            self,
-            self.SAVE_TEXT,
-            path
-        )
+        new_path, _ = QtWidgets.QFileDialog.getSaveFileName(self, self.SAVE_TEXT, path)
         with open(new_path, "w") as fh:
             fh.write(self.template._template_str)
         self._display_information(
             message="Template saved successfully to {}".format(new_path),
-            title="Success!"
+            title="Success!",
         )
 
     @QtCore.Slot()
@@ -164,15 +159,11 @@ class FileTemplateInputWidget(TemplateInputWidget):
 
         if path_is_dir:
             new_path = QtWidgets.QFileDialog.getExistingDirectory(
-                self,
-                self.LOAD_TEXT,
-                path
+                self, self.LOAD_TEXT, path
             )
         else:
             new_path, _ = QtWidgets.QFileDialog.getOpenFileName(
-                self,
-                self.LOAD_TEXT,
-                path
+                self, self.LOAD_TEXT, path
             )
         self._disk_path = new_path
         self.load_path(self._disk_path)

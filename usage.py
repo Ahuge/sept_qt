@@ -244,7 +244,9 @@ class Dialog(QtGui.QDialog):
         if not os.path.exists(template_path):
             with open(template_path, "w") as fh:
                 fh.write("{{sequence}}/{{shot}}_v{{version}}.{{extension}}")
-        self.template_input_widget = FileTemplateInputWidget(self.parser, disk_path=template_path, parent=self)
+        self.template_input_widget = FileTemplateInputWidget(
+            self.parser, disk_path=template_path, parent=self
+        )
         self.template_preview_widget = TemplatePreviewWidget(self.version_data)
         self.template_input_widget.template_changed.connect(
             self.template_preview_widget.preview_template
