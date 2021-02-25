@@ -66,6 +66,16 @@ class TemplateInputWidget(QtWidgets.QWidget):
     def _build_ui(self):
         self.setLayout(QtWidgets.QVBoxLayout())
         self.layout().setContentsMargins(0, 0, 0, 0)
+        _line_widget = self._build_input_widget()
+
+        self._error_widget = QtWidgets.QLabel(self)
+        self._error_widget.setWordWrap(True)
+        self._error_widget.hide()
+
+        self.layout().addWidget(_line_widget)
+        self.layout().addWidget(self._error_widget)
+
+    def _build_input_widget(self):
         self._line_widget = QtWidgets.QTextEdit(self)
         self._line_widget.setLineWrapMode(QtWidgets.QTextEdit.NoWrap)
         self._line_widget.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
@@ -76,15 +86,8 @@ class TemplateInputWidget(QtWidgets.QWidget):
             QtWidgets.QSizePolicy.Policy.Expanding,
             QtWidgets.QSizePolicy.Policy.Fixed,
         )
-
-        self._error_widget = QtWidgets.QLabel(self)
-        self._error_widget.setWordWrap(True)
-        self._error_widget.hide()
-
-        self.layout().addWidget(self._line_widget)
-        self.layout().addWidget(self._error_widget)
-
         self._line_widget.textChanged.connect(self._handle_text_edited)
+        return self._line_widget
 
     def _stop_error_timer(self):
         """
