@@ -123,7 +123,9 @@ class FileTemplateInputWidget(TemplateInputWidget):
 
     def _get_folder_path(self):
         path = os.getcwd()
-        if os.path.isfile(self._disk_path):
+        if self._disk_path is None:
+            return path
+        elif os.path.isfile(self._disk_path):
             if os.path.exists(self._disk_path):
                 path = self._disk_path
             elif os.path.exists(os.path.dirname(self._disk_path)):
