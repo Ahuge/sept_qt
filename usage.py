@@ -4,7 +4,7 @@ import os
 from PySide import QtGui
 
 from sept import PathTemplateParser, Token
-from sept_qt import TemplateInputWidget, TemplatePreviewWidget, DocumentationWidget
+from sept_qt import TemplatePreviewWidget, DocumentationWidget, FileTemplateInputWidget
 
 
 def get_tokens():
@@ -240,7 +240,11 @@ class Dialog(QtGui.QDialog):
         self.main_page = QtGui.QWidget()
         self.main_page.setLayout(QtGui.QVBoxLayout())
 
-        self.template_input_widget = TemplateInputWidget(self.parser)
+        template_path = os.path.join(os.path.dirname(__file__), "template.sept")
+        if not os.path.exists(template_path):
+            with open(template_path, "w") as fh:
+                fh.write("{{sequence}}/{{shot}}_v{{version}}.{{extension}}")
+        self.template_input_widget = FileTemplateInputWidget(self.parser, disk_path=template_path, parent=self)
         self.template_preview_widget = TemplatePreviewWidget(self.version_data)
         self.template_input_widget.template_changed.connect(
             self.template_preview_widget.preview_template
@@ -248,6 +252,9 @@ class Dialog(QtGui.QDialog):
         self.template_preview_widget.resolve_error.connect(
             self.template_input_widget.recieve_error
         )
+
+        # Refresh based off our disk loaded template
+        self.template_input_widget.refresh()
 
         self.main_page.layout().addWidget(self.template_input_widget)
         self.main_page.layout().addWidget(self.template_preview_widget)
