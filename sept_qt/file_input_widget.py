@@ -134,6 +134,9 @@ class FileTemplateInputWidget(TemplateInputWidget):
         elif os.path.isdir(self._disk_path):
             if os.path.exists(self._disk_path):
                 path = self._disk_path
+        elif os.path.isdir(os.path.dirname(self._disk_path)):
+            if os.path.exists(os.path.dirname(self._disk_path)):
+                path = os.path.dirname(self._disk_path)
         return path
 
     @QtCore.Slot()
