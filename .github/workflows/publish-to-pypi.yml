@@ -17,7 +17,7 @@ jobs:
                 RELEASE_BODY=$(jq --raw-output '.release.body' $GITHUB_EVENT_PATH);
                 echo ::set-output name=upload-url::https://uploads.github.com/repos/${GITHUB_REPOSITORY}/releases/${RELEASE_ID}/assets
                 echo ::set-output name=release-body::${RELEASE_BODY}
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3.0.2
               name: Checkout
             - name: Setup python 2
               uses: actions/setup-python@v2
