@@ -52,7 +52,7 @@ class FileTemplateInputWidget(TemplateInputWidget):
         self._save_to_disk_button = None
         self._disk_path = disk_path
 
-        if disk_path and os.path.exists(disk_path):
+        if disk_path and os.path.exists(disk_path) and os.path.isfile(disk_path):
             self.load_path(disk_path)
 
     def load_path(self, path):
